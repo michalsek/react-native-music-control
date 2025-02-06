@@ -1,15 +1,6 @@
-⚠️ **NO LONGER MAINTAINED** ⚠️
-
-Please use [react-native-track-player](https://github.com/doublesymmetry/react-native-track-player) instead ✅
-
----
-
 ## react-native-music-control
 
 Display and manage media controls on lock screen and notification center for iOS and Android.
-
-![NPM Version](https://img.shields.io/npm/v/react-native-music-control?style=flat-square 'NPM Version')
-![NPM Downloads](https://img.shields.io/npm/dm/react-native-music-control?style=flat-square 'NPM Downloads')
 
 ## Project
 
@@ -35,16 +26,16 @@ npm install react-native-music-control --save
 ## Android
 
 1. Add the `android.permission.FOREGROUND_SERVICE` permission to your `AndroidManifest.xml`:
-    ```
-    <uses-permission
-      android:name="android.permission.FOREGROUND_SERVICE" />
-    ```
+   ```
+   <uses-permission
+     android:name="android.permission.FOREGROUND_SERVICE" />
+   ```
 1. Set the `launchMode` of MainActivity to `singleTask` by adding in `AndroidManifest.xml`:
-    ```
-    <activity
-      android:name=".MainActivity"
-      android:launchMode="singleTask">
-    ```
+   ```
+   <activity
+     android:name=".MainActivity"
+     android:launchMode="singleTask">
+   ```
 
 ## For React Native < v0.60
 
@@ -59,7 +50,7 @@ See [TROUBLESHOOTING.md](./TROUBLESHOOTING.md)
 # Usage
 
 ```javascript
-import MusicControl from 'react-native-music-control'
+import MusicControl from "react-native-music-control";
 ```
 
 ### Now Playing
@@ -74,20 +65,20 @@ For Android's rating system, remove the `rating` value for unrated tracks, use a
 
 ```javascript
 MusicControl.setNowPlaying({
-  title: 'Billie Jean',
-  artwork: 'https://i.imgur.com/e1cpwdo.png', // URL or RN's image require()
-  artist: 'Michael Jackson',
-  album: 'Thriller',
-  genre: 'Post-disco, Rhythm and Blues, Funk, Dance-pop',
+  title: "Billie Jean",
+  artwork: "https://i.imgur.com/e1cpwdo.png", // URL or RN's image require()
+  artist: "Michael Jackson",
+  album: "Thriller",
+  genre: "Post-disco, Rhythm and Blues, Funk, Dance-pop",
   duration: 294, // (Seconds)
-  description: '', // Android Only
+  description: "", // Android Only
   color: 0xffffff, // Android Only - Notification Color
   colorized: true, // Android 8+ Only - Notification Color extracted from the artwork. Set to false to use the color property instead
-  date: '1983-01-02T00:00:00Z', // Release Date (RFC 3339) - Android Only
+  date: "1983-01-02T00:00:00Z", // Release Date (RFC 3339) - Android Only
   rating: 84, // Android Only (Boolean or Number depending on the type)
-  notificationIcon: 'my_custom_icon', // Android Only (String), Android Drawable resource name for a custom notification icon
+  notificationIcon: "my_custom_icon", // Android Only (String), Android Drawable resource name for a custom notification icon
   isLiveStream: true, // iOS Only (Boolean), Show or hide Live Indicator instead of seekbar on lock screen for live streams. Default value is false.
-})
+});
 ```
 
 ### Enable and Disable controls
@@ -98,38 +89,39 @@ MusicControl.setNowPlaying({
 
 ```javascript
 // Basic Controls
-MusicControl.enableControl('play', true)
-MusicControl.enableControl('pause', true)
-MusicControl.enableControl('stop', false)
-MusicControl.enableControl('nextTrack', true)
-MusicControl.enableControl('previousTrack', false)
+MusicControl.enableControl("play", true);
+MusicControl.enableControl("pause", true);
+MusicControl.enableControl("stop", false);
+MusicControl.enableControl("nextTrack", true);
+MusicControl.enableControl("previousTrack", false);
 
 // Changing track position on lockscreen
-MusicControl.enableControl('changePlaybackPosition', true)
+MusicControl.enableControl("changePlaybackPosition", true);
 
 // Seeking
-MusicControl.enableControl('seekForward', false) // iOS only
-MusicControl.enableControl('seekBackward', false) // iOS only
-MusicControl.enableControl('seek', false) // Android only
-MusicControl.enableControl('skipForward', false)
-MusicControl.enableControl('skipBackward', false)
+MusicControl.enableControl("seekForward", false); // iOS only
+MusicControl.enableControl("seekBackward", false); // iOS only
+MusicControl.enableControl("seek", false); // Android only
+MusicControl.enableControl("skipForward", false);
+MusicControl.enableControl("skipBackward", false);
 
 // Android Specific Options
-MusicControl.enableControl('setRating', false)
-MusicControl.enableControl('volume', true) // Only affected when remoteVolume is enabled
-MusicControl.enableControl('remoteVolume', false)
+MusicControl.enableControl("setRating", false);
+MusicControl.enableControl("volume", true); // Only affected when remoteVolume is enabled
+MusicControl.enableControl("remoteVolume", false);
 
 // iOS Specific Options
-MusicControl.enableControl('enableLanguageOption', false)
-MusicControl.enableControl('disableLanguageOption', false)
+MusicControl.enableControl("enableLanguageOption", false);
+MusicControl.enableControl("disableLanguageOption", false);
 ```
 
 `skipBackward` and `skipForward` controls on accept additional configuration options with `interval` key:
 
 ```javascript
-MusicControl.enableControl('skipBackward', true, { interval: 15 })
-MusicControl.enableControl('skipForward', true, { interval: 30 })
+MusicControl.enableControl("skipBackward", true, { interval: 15 });
+MusicControl.enableControl("skipForward", true, { interval: 30 });
 ```
+
 For Android, 5, 10 and 30 is fixed
 
 For iOS, it is dynamic so any number is accepted
@@ -149,7 +141,7 @@ MusicControl.updatePlayback({
   volume: 10, // Android Only (Number from 0 to maxVolume) - Only used when remoteVolume is enabled
   maxVolume: 10, // Android Only (Number) - Only used when remoteVolume is enabled
   rating: MusicControl.RATING_PERCENTAGE, // Android Only (RATING_HEART, RATING_THUMBS_UP_DOWN, RATING_3_STARS, RATING_4_STARS, RATING_5_STARS, RATING_PERCENTAGE)
-})
+});
 ```
 
 _Examples_
@@ -159,13 +151,13 @@ _Examples_
 MusicControl.updatePlayback({
   state: MusicControl.STATE_PAUSED,
   elapsedTime: 135,
-})
+});
 
 // Changes the volume
 MusicControl.updatePlayback({
   volume: 9, // Android Only
   elapsedTime: 167,
-})
+});
 ```
 
 ### Reset Now Playing
@@ -173,7 +165,7 @@ MusicControl.updatePlayback({
 Resets and hides the music controls.
 
 ```javascript
-MusicControl.resetNowPlaying()
+MusicControl.resetNowPlaying();
 ```
 
 ### Stop Controls
@@ -181,13 +173,13 @@ MusicControl.resetNowPlaying()
 Resets, hides the music controls and disables everything.
 
 ```javascript
-MusicControl.stopControl()
+MusicControl.stopControl();
 ```
 
 ### Set notification id and channel id (Android Only).
 
 ```javascript
-MusicControl.setNotificationId(10, 'channel')
+MusicControl.setNotificationId(10, "channel");
 ```
 
 If you want to change the default notification id and channel name, call this once before displaying any notifications.
@@ -198,13 +190,13 @@ There is also a `closeNotification` control on Android controls the swipe behavi
 
 ```javascript
 // Always allow user to close notification on swipe
-MusicControl.enableControl('closeNotification', true, { when: 'always' })
+MusicControl.enableControl("closeNotification", true, { when: "always" });
 
 // Default - Allow user to close notification on swipe when audio is paused
-MusicControl.enableControl('closeNotification', true, { when: 'paused' })
+MusicControl.enableControl("closeNotification", true, { when: "paused" });
 
 // Never allow user to close notification on swipe
-MusicControl.enableControl('closeNotification', true, { when: 'never' })
+MusicControl.enableControl("closeNotification", true, { when: "never" });
 ```
 
 ### Register to Events
@@ -222,7 +214,7 @@ componentDidMount() {
     MusicControl.on(Command.play, ()=> {
       this.props.dispatch(playRemoteControl());
     })
-    
+
     // on iOS this event will also be triggered by audio router change events
     // happening when headphones are unplugged or a bluetooth audio peripheral disconnects from the device
     MusicControl.on(Command.pause, ()=> {
@@ -274,7 +266,7 @@ componentDidMount() {
 # Important Notes
 
 - Android only supports the intervals 5, 10, & 30, while iOS supports any number
-- Make sure when you call `MusicControl.resetNowPlaying()` and  `MusicControl.stopControl()` you must have controls enabled otherwise it will create issues
+- Make sure when you call `MusicControl.resetNowPlaying()` and `MusicControl.stopControl()` you must have controls enabled otherwise it will create issues
 - You can also use `Command` constants in `enableControl`
 - The interval value only changes what number displays in the UI, the actual logic to skip forward or backward by a given amount must be implemented in the appropriate callbacks
 - Android 10+ does support the seek bar in the notification, but only when meeting specific requirements: setNowPlaying() must be called with a duration value before enabling any controls
@@ -293,7 +285,7 @@ MusicControl.on(Command.play, () => {
 It is possible to customize the icon used in the notification on Android. By default you can add a drawable resource to your package with the file name `music_control_icon` and the notification will use your custom icon. If you need to specify a custom icon name, or change your notification icon during runtime, the `setNowPlaying` function accepts a string for an Android drawable resource name in the `notificationIcon` prop. Keep in mind that just like with `music_control_icon` the resource specified has to be in the drawable package of your Android app.
 
 ```javascript
-MusicControl.setCustomNotificationIcon('my_custom_icon')
+MusicControl.setCustomNotificationIcon("my_custom_icon");
 ```
 
 # Contributing
